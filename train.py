@@ -102,7 +102,7 @@ parser.add_argument("--criteriation",
                     )
 
 parser.add_argument('--epoc', 
-                    default=10, 
+                    default=15, 
                     type=int, 
                     help='number of itterations during training'
                     )
