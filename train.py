@@ -4,7 +4,7 @@ from util.utils import Optimizer, Critireation
 import validate, entireImage, util
 import entireImage, validate, numpy 
 import datetime
-from architectures import net15nomax, net15max, net17nomax, net17max, net19nomax, net19max, resnet15nomax, resnet15max, resnet17nomax, resnet17max, resnet19max, resnet19nomax, gabriel, su, net13max, net13nomax, resnet13max, resnet13nomax
+from architectures import new, net15nomax, net15max, net17nomax, net17max, net19nomax, net19max, resnet15nomax, resnet15max, resnet17nomax, resnet17max, resnet19max, resnet19nomax, gabriel, su, net13max, net13nomax, resnet13max, resnet13nomax
 import argparse, os
 from tqdm import tqdm
 import torch.multiprocessing as mp
@@ -270,7 +270,7 @@ def algorithm():
         print("Running experiment of Su et. al")
         model = su.Su(MACRO.NUMBERFEATURES, MACRO.BATCH_SIZE)
     elif MACRO.WINDOW_SIZE == 13 and not MACRO.MAXPOOLING: 
-        model = net13nomax.Net13NoMax(MACRO.NUMBERFEATURES)
+        model = new.Net13NoMax(MACRO.NUMBERFEATURES)
     elif MACRO.WINDOW_SIZE == 13 and MACRO.MAXPOOLING:
         model = net13max.Net13Max(MACRO.NUMBERFEATURES)         
     elif MACRO.WINDOW_SIZE == 15 and not MACRO.MAXPOOLING: 
