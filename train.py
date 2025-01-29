@@ -76,7 +76,7 @@ parser.add_argument('--groundTruthFolder',
                     )  
 
 parser.add_argument('--residual', 
-                    default=True, 
+                    default=False, 
                     action='store_true',
                     help="Enable/disable residual connections in the architecture"
                     )
