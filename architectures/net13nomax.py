@@ -14,7 +14,7 @@ class Net13NoMax(nn.Module):
         self.l5 = nn.Conv2d(numberFeatures, 1, kernel_size=3, padding="valid", stride=(1, 1))
         self.sigmoid = nn.Sigmoid() 
 
-        self.numberLayers = 7
+        self.numberLayers = 6
 
             
     def forward(self, x):
