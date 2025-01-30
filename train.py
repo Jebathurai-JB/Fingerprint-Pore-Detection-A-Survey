@@ -270,7 +270,7 @@ def algorithm():
         print("Running experiment of Su et. al")
         model = su.Su(MACRO.NUMBERFEATURES, MACRO.BATCH_SIZE)
     elif MACRO.WINDOW_SIZE == 13 and not MACRO.MAXPOOLING: 
-        model = new.Net13NoMax(MACRO.NUMBERFEATURES)
+        model = net13nomax.Net13NoMax(MACRO.NUMBERFEATURES)
     elif MACRO.WINDOW_SIZE == 13 and MACRO.MAXPOOLING:
         model = net13max.Net13Max(MACRO.NUMBERFEATURES)         
     elif MACRO.WINDOW_SIZE == 15 and not MACRO.MAXPOOLING: 
