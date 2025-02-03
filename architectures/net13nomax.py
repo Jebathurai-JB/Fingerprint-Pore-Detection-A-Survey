@@ -3,7 +3,7 @@ from torch import nn
 
 class Net13NoMax(nn.Module):
     def __init__(self, numberFeatures):
-        super(Net13NoMax, self)._init_()
+        super(Net13NoMax, self).__init__()
 
         self.l1 = LayerBlock(1, numberFeatures, 5, False)  # 13 -> 9
         self.l2 = LayerBlock(numberFeatures, numberFeatures, 3, False)  # 9 -> 7
