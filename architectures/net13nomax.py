@@ -2,7 +2,7 @@ from architectures.template import LayerBlock
 from torch import nn
 
 class Net13NoMax(nn.Module):
-    def _init_(self, numberFeatures, dropout_prob=0.5):  # Added dropout probability
+    def _init_(self, numberFeatures):
         super(Net13NoMax, self)._init_()
 
         self.l1 = LayerBlock(1, numberFeatures, 5, False)  # 13 -> 9
@@ -15,10 +15,10 @@ class Net13NoMax(nn.Module):
 
         # Static ANN Layers with Dropout
         self.fc1 = nn.Linear(128, 64)
-        self.dropout1 = nn.Dropout(dropout_prob)  # Dropout after first FC layer
+        self.dropout1 = nn.Dropout(0.5)  # Dropout after first FC layer
         
         self.fc2 = nn.Linear(64, 1)
-        self.dropout2 = nn.Dropout(dropout_prob)  # Dropout before the final layer (optional)
+        self.dropout2 = nn.Dropout(0.5)  # Dropout before the final layer (optional)
         
         self.sigmoid = nn.Sigmoid()
 
