@@ -18,7 +18,6 @@ class Net13NoMax(nn.Module):
         self.dropout1 = nn.Dropout(0.5)  # Dropout after first FC layer
         
         self.fc2 = nn.Linear(64, 1)
-        self.dropout2 = nn.Dropout(0.5)  # Dropout before the final layer (optional)
         
         self.sigmoid = nn.Sigmoid()
 
@@ -36,7 +35,6 @@ class Net13NoMax(nn.Module):
         x = self.dropout1(x)  # Apply dropout after first FC layer
         
         x = self.fc2(x)
-        x = self.dropout2(x)  # Apply dropout before final layer (optional)
         
         x = self.sigmoid(x)
 
