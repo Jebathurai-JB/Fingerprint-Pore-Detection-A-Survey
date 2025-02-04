@@ -31,7 +31,7 @@ class Net13NoMax(nn.Module):
         # *Dynamically set fc1 input size*
         if self.fc1 is None:
             input_size = x.shape[1]  # Dynamically get input features
-            self.fc1 = nn.Linear(input_size, 64)  # Move to correct device
+            self.fc1 = nn.Linear(input_size, 64).to("cuda")  # Move to correct device
 
         x = self.fc1(x)
         x = self.dropout1(x)
