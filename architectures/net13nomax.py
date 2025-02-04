@@ -2,7 +2,7 @@ from architectures.template import LayerBlock
 from torch import nn
 
 class Net13NoMax(nn.Module):
-    def _init_(self, numberFeatures, dropout_prob=0.5):
+    def _init_(self, numberFeatures):
         super(Net13NoMax, self)._init_()
 
         self.l1 = LayerBlock(1, numberFeatures, 5, False)
@@ -14,9 +14,9 @@ class Net13NoMax(nn.Module):
 
         # Placeholder, will be updated dynamically
         self.fc1 = None
-        self.dropout1 = nn.Dropout(dropout_prob)
+        self.dropout1 = nn.Dropout(0.5)
         self.fc2 = nn.Linear(64, 1)
-        self.dropout2 = nn.Dropout(dropout_prob)
+        self.dropout2 = nn.Dropout(0.5)
         self.sigmoid = nn.Sigmoid()
         self.numberLayers = 6
 
@@ -31,7 +31,7 @@ class Net13NoMax(nn.Module):
         # *Dynamically set fc1 input size*
         if self.fc1 is None:
             input_size = x.shape[1]  # Dynamically get input features
-            self.fc1 = nn.Linear(input_size, 64).to(x.device)  # Move to correct device
+            self.fc1 = nn.Linear(input_size, 64)  # Move to correct device
 
         x = self.fc1(x)
         x = self.dropout1(x)
