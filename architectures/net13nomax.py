@@ -14,7 +14,7 @@ class Net13NoMax(nn.Module):
         self.flatten = nn.Flatten()
 
         # Static ANN Layers with Dropout
-        self.fc1 = nn.Linear(numberFeature*3*3, 64)
+        self.fc1 = nn.Linear(numberFeatures*3*3, 64)
         self.dropout1 = nn.Dropout(0.5)  # Dropout after first FC layer
         
         self.fc2 = nn.Linear(64, 1)
