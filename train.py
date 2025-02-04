@@ -108,7 +108,7 @@ parser.add_argument('--epoc',
                     )
 
 parser.add_argument('--batchSize', 
-                    default=128, 
+                    default=64, 
                     type=int, 
                     help = 'size of a batch sample'
                     )
