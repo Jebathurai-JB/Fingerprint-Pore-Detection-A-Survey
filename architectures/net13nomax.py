@@ -12,7 +12,7 @@ class Net13NoMax(nn.Module):
         
         # Flatten before passing to fully connected layers
         self.flatten = nn.Flatten()
-
+        
         # Static ANN Layers with Dropout
         self.fc1 = nn.Linear(numberFeatures*3*3, 64)
         self.dropout1 = nn.Dropout(0.5)  # Dropout after first FC layer
@@ -26,13 +26,23 @@ class Net13NoMax(nn.Module):
 
     def forward(self, x):
         x = self.l1(x)
+        print("After l1:", x.shape)
+        
         x = self.l2(x)
+        print("After l2:", x.shape)
+        
         x = self.l3(x)
+        print("After l3:", x.shape)
+        
         x = self.l4(x)
+        print("After l4:", x.shape)
         
         x = self.flatten(x)
+        print("Shape after flatten:", x.shape)
         
         x = self.fc1(x)
+        print(x.shape)
+        
         x = self.dropout1(x)  # Apply dropout after first FC layer
         
         x = self.fc2(x)
