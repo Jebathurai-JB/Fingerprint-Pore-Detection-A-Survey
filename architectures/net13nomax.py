@@ -2,8 +2,8 @@ from architectures.template import LayerBlock
 from torch import nn
 
 class Net13NoMax(nn.Module):
-    def _init_(self, numberFeatures):
-        super(Net13NoMax, self)._init_()
+    def __init__(self, numberFeatures):
+        super(Net13NoMax, self).__init__()
 
         self.l1 = LayerBlock(1, numberFeatures, 5, False)
         self.l2 = LayerBlock(numberFeatures, numberFeatures, 3, False)
