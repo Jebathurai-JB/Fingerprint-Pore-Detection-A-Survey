@@ -9,9 +9,15 @@ class Net13NoMax(nn.Module):
         self.l2 = LayerBlock(numberFeatures, numberFeatures, 3, False)  # 9 -> 7
         self.l3 = LayerBlock(numberFeatures, numberFeatures, 3, False)  # 7 -> 5
         self.l4 = LayerBlock(numberFeatures, numberFeatures, 3, False)  # 5 -> 3
+        print("After l1:", self.l1.shape)
+        print("After l2:", self.l2.shape)
+        print("After l3:", self.l3.shape)
+        print("After l4:", self.l4.shape)
+
         
         # Flatten before passing to fully connected layers
         self.flatten = nn.Flatten()
+        print("After flatten:", self.flatten.shape)
         
         # Static ANN Layers with Dropout
         self.fc1 = nn.Linear(numberFeatures*3*3, 64)
