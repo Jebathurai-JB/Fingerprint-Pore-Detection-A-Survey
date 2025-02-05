@@ -1,25 +1,41 @@
-from architectures.template import LayerBlock
 from torch import nn
 
 class Net13NoMax(nn.Module):
     def __init__(self, numberFeatures):
         super(Net13NoMax, self).__init__()
 
-        self.l1 = LayerBlock(1, numberFeatures, 5, False) # 13 -> 11
-        #self.l2 = LayerBlock(numberFeatures, numberFeatures, 3, False) # 11 -> 9
-        self.l2 = LayerBlock(numberFeatures, numberFeatures, 3, False) # 9 -> 7
-        self.l3 =  LayerBlock(numberFeatures, numberFeatures, 3, False) # 7 -> 5 
-        self.l4 = LayerBlock(numberFeatures, numberFeatures, 3, False)  #5 -> 3
-        self.l5 = nn.Conv2d(numberFeatures, 1, kernel_size=3, padding="valid", stride=(1, 1))
-        self.sigmoid = nn.Sigmoid() 
-
-        self.numberLayers = 6
-
-            
-    def forward(self, x):
+        self.l1 = nn.Sequential(
+            nn.Conv2d(1, numberFeatures, kernel_size=5, padding=2, stride=1),  # Only this layer has padding
+            nn.BatchNorm2d(numberFeatures),
+            nn.ReLU()
+        )
         
+        self.l2 = nn.Sequential(
+            nn.Conv2d(numberFeatures, numberFeatures, kernel_size=3, stride=1),
+            nn.BatchNorm2d(numberFeatures),
+            nn.ReLU()
+        )
+        
+        self.l3 = nn.Sequential(
+            nn.Conv2d(numberFeatures, numberFeatures, kernel_size=3, stride=1),
+            nn.BatchNorm2d(numberFeatures),
+            nn.ReLU()
+        )
+
+        self.l4 = nn.Sequential(
+            nn.Conv2d(numberFeatures, numberFeatures, kernel_size=3, stride=1),
+            nn.BatchNorm2d(numberFeatures),
+            nn.ReLU()
+        )
+
+        self.l5 = nn.Conv2d(numberFeatures, 1, kernel_size=3, stride=1)
+
+        self.sigmoid = nn.Sigmoid()
+
+        self.numberLayers = 5  # Updated based on the modifications
+
+    def forward(self, x):
         x = self.l1(x)
-        #x = self.l2(x)
         x = self.l2(x)
         x = self.l3(x)
         x = self.l4(x)
@@ -27,4 +43,3 @@ class Net13NoMax(nn.Module):
         x = self.sigmoid(x)
 
         return x
-        
