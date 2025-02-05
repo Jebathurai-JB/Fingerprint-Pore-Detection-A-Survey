@@ -5,7 +5,7 @@ class Net13NoMax(nn.Module):
     def __init__(self, numberFeatures):
         super(Net13NoMax, self).__init__()
 
-        self.l1 = LayerBlock(1, numberFeatures, 3, False) # 13 -> 11
+        self.l1 = LayerBlock(1, numberFeatures, 5, False) # 13 -> 11
         #self.l2 = LayerBlock(numberFeatures, numberFeatures, 3, False) # 11 -> 9
         self.l2 = LayerBlock(numberFeatures, numberFeatures, 3, False) # 9 -> 7
         self.l3 =  LayerBlock(numberFeatures, numberFeatures, 3, False) # 7 -> 5 
