@@ -36,10 +36,15 @@ class Net13NoMax(nn.Module):
 
     def forward(self, x):
         x = self.l1(x)
+        print(x.shape)
         x = self.l2(x)
+        print(x.shape)
         x = self.l3(x)
+        print(x.shape)
         x = self.l4(x)
+        print(x.shape)
         x = self.l5(x)
+        print(x.shape)
         x = self.sigmoid(x)
 
         return x
